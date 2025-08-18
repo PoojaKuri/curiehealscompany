@@ -256,32 +256,32 @@ text-decoration: none;
                     <h3 class="mb-4 maincolor">Enquiry ! </h3>
                     <p class="mb-4">Please share your details. We will be in touch as soon as possible.</p>
                     <form
-                             action="https://formspree.io/f/xknaddka"
+                             action=""
                             method="POST"
                     >
 
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 120px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" name="message" id="message" style="height: 120px"></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
@@ -381,7 +381,23 @@ text-decoration: none;
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 	<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '6a891b67-641e-4a6b-87d5-cadffe0e08a4', f: true }); done = true; } }; })();</script>
-	
+	<script>
+document.getElementById("whatsappForm").addEventListener("submit", function(event){
+    event.preventDefault(); // Prevent page reload
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let subject = document.getElementById("subject").value;
+    let message = document.getElementById("message").value;
+
+    // Replace with your WhatsApp number (with country code, no + or 0)
+    let phone = "919423178631";  
+
+    let url = `https://wa.me/${phone}?text=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0ASubject:%20${encodeURIComponent(subject)}%0AMessage:%20${encodeURIComponent(message)}`;
+
+    window.open(url, '_blank').focus();
+});
+</script>
     </body>
 
 </html>
